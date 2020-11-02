@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Admin</title>
+  </head>
+
+
+    <body>
+        {% if user.is_authenticated %}
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="/media/logo/Sage-University.png" height="50" class="d-inline-block align-top" alt="" loading="lazy">            
+            </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link ml-2" href="Admin-Notice">Notices</a>
+                        <a class="nav-item nav-link ml-2" href="Admin-Event">Events</a>
+                        <a class="nav-item nav-link ml-2" href="Admin-Gallery">Gallery</a>
+                        <a class="nav-item nav-link ml-2" href="Admin-Email">Emails</a>
+                        <a class="nav-item nav-link ml-2" href="Admin-Job-Board">Job-Board</a>                
+                        <a class="nav-item nav-link ml-2" href="Admin-Search">Search</a>   
+                        <a href="Admin-Logout" type="button" class="btn btn-dark ml-2">logout</a>             
+                    </div>
+                    </div>
+        </nav><br>
+
+        <div class="container">        
+
+        <form method="POST" action="Admin-Search">
+                {% csrf_token %}
+
+        <div class="row">
+
+            
+            <div class="col-md-3">
+                <label for="validationCustom04">Year of Passing</label>
+                <select class="custom-select" id="inputGroupSelect01" name="year">
+                    <option value="">Year</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select>                
+            </div>
+            
+            
+
+            <div class="col-md-3">
+                <label for="validationCustom04">Course</label>
+                <select class="custom-select" id="inputGroupSelect01" name="course">
+                    <option value="">Course</option>
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="M.Tech">M.Tech</option>                  
+                </select>               
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationCustom04">Branch</label>
+                <select class="custom-select" id="inputGroupSelect02" name="branch">
+                    <option value="">Branch</option>
+                    <option value="Information technology">Information technology</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electronics and communication">Electronics and communication</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Digital Communication3">Digital Communication</option>
+                    <option value="Automobile">Automobile</option>
+                </select>                
+            </div>
+            <div class="col-md-2">
+            <button class="btn btn-lg btn-success my-4 float-right" type="submit">Search</button>
+            </div>
+        </div>         
+        </form>
+        <hr>
+
+        <p>
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{message}}!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            {% endfor %}
+        </p>
+    </div>
+
+        {% if search %}
+        <table class="table table-bordered table-striped container"  style="overflow: scroll;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course - Branch - Section</th>
+                    <th>Year of Passing</th>
+                    <th>Enrollment no.</th>
+                    <th>Scholar no.</th>
+                    <th></th>                    
+                </tr>
+            </thead>
+            {% for search in search %}
+            <tbody id="myTable">
+
+                <tr>
+                    <td>{{search.Firstname}} {{search.Lastname}}</td>      
+                    <td>{{search.Course}} - {{search.Branch}} - {{search.Section}}</td>
+                    <td>{{search.Year}}</td>
+                    <td>{{search.Enrollment_no}}</td>
+                    <td>{{search.Scholar_no}}</td>
+                    <td><a href="Admin-View-Profile/{{search.Scholar_no}}" class="btn-sm btn btn-outline-primary text-center">View Profile</a></td>                    
+                </tr>
+                
+
+            </tbody>
+            {% endfor %}
+        </table>
+        {% endif %}
+    
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        {% endif %}
+    </body>
+</html>

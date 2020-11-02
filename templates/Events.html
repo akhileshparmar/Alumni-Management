@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <script>
+      function openNav() {
+        document.getElementById("myNav").style.height = "100%";
+      }
+      
+      function closeNav() {
+        document.getElementById("myNav").style.height = "0%";
+      }
+      </script>
+
+    <title>Events</title>
+  </head>
+  <body>
+    <div class="">
+      {% if user.is_authenticated %}   
+    
+      <header class="blog-header py-3 container">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-3 text-center">            
+            <a class="btn btn-sm btn-outline-primary mx-2 my-2" href="/View-Profile/{{user.id}}" >View profile</a>
+          </div>
+          <div class="col-6 text-center">
+            <img src="/media/logo/Sage-University.png" alt=""/>
+            <h3 style="font-family: 'Times New Roman';">Alumni Portal</h3>
+          </div>
+          <div class="col-3 text-center">
+            <!-- SEARCH ICON
+            <a class="text-muted" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+            </a>-->            
+            <a class="btn btn-sm btn-outline-secondary mx-2 my-2" href="/Logout" >logout</a>
+          </div>
+        </div>
+      </header>
+
+      {% else %}
+
+      <header class="blog-header py-3 container">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-3 text-center">
+            <a class="btn btn-sm btn-outline-success mx-2 my-2" href="/Login" >login</a>
+          </div>
+          <div class="col-6 text-center">
+            <img src="/media/logo/Sage-University.png" alt="Sage_logo"/>
+            <h3 style="font-family: 'Times New Roman';">Alumni Portal</h3>
+          </div>
+          <div class="col-3 text-center">
+            <!-- SEARCH ICON
+            <a class="text-muted" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+            </a>-->            
+            <a class="btn btn-sm btn-outline-primary mx-2 my-2" href="/Register" >Register</a>            
+          </div>
+        </div>
+      </header>
+
+      {% endif %}
+      <hr class="featurette-divider">
+
+      <div class="container-fluid nav-scroller py-1 mb-2 px-1">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 text-muted mx-1" href="/">Home</a>
+          <a class="p-2 text-muted mx-1" href="/Notices">Notices</a>          
+          <a class="p-2 text-muted mx-1" href="/Gallery">Gallery</a>
+          <a class="p-2 text-muted mx-1" href="/Job-Board">Job board</a>
+          <a class="p-2 text-muted mx-1" href="#" onclick="openNav()">Contact-Us</a>                  
+        </nav>
+      </div>
+
+      <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a>
+            <img src="media/logo/phone.png" class="mr-2"/>
+          9876543210</a><br>
+          <a href="/Email">
+            <img src="media/logo/email-48.png" class="mr-2"/>
+            E-mail for any queries</a><br>
+          <a href="/Feedback  ">
+            <img src="media/logo/feedback.png" class="mr-2"/>
+            Feedback / Suggesion</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading" style="font-family: 'Times New Roman', Times, serif;">Events</h1>
+          <br>
+        </div>        
+        
+          <div class="container">  
+            <div class="row">
+              {% for event in event %}
+              <div class="col-md-4">                
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="media/{{event.Image}}">
+                  <div class="card-body">
+                    <h4><a href="Event-info/{{event.id}}" style="font-family: 'Georgia';color: black;">{{event.Name}}</a></h4>  
+                    <!--                  
+                    <div class="d-flex justify-content-between align-items-center">                      
+                      <small class="text-muted">{{event.EventDate}}</small>
+                    </div>
+                    -->
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div><br>              
+    </section>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top container">
+        <div class="row">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="/media/logo/Sage-University.png" alt="Sage_logo" width="150em" height="150em">
+            <small class="d-block mb-3 text-muted">&copy; 2020-2022</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="/">Home</a></li>
+              <li><a class="text-muted" href="/Notices">Notices</a></li>
+              <li><a class="text-muted" href="/Gallery">Gallery</a></li>
+              <li><a class="text-muted" href="/Job-Board">Job board</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+              {% if user.is_authenticated %}
+        <li><a class="text-muted" href="/Logout" >logout</a></li>
+        {% else %}
+        <li><a class="text-muted" href="/Login" >login</a></li>
+        <li><a class="text-muted" href="/Register">Register</a></li>
+        {% endif %}
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Contact-Us</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="/About">About Us</a></li>
+              <li><a class="text-muted" >Phone no. - 9876543210</a></li>
+              <li><a class="text-muted" href="/Email">Email for any queries</a></li>
+              <li><a class="text-muted" href="/Feedback">Feedback / Suggestion</a></li>
+            </ul>
+          </div>
+          <a href="#">Go to top</a>
+        </div>
+      </footer>
+    </body>
+
+    <style>
+
+    
+        .overlay {
+          height: 0%;
+          width: 100%;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0, 1);
+          overflow-y: hidden;
+          transition: 0.6s;
+        }
+        
+        .overlay-content {
+          position: relative;
+          top: 25%;
+          width: 100%;
+          text-align: center;
+          margin-top: 30px;
+        }
+        
+        .overlay a {
+          padding: 8px;
+          text-decoration: none;
+          font-size: 36px;
+          color: #ffffff;
+          display: block;
+          transition: 0.3s;
+        }
+        
+        .overlay a:hover, .overlay a:focus {
+          color: #f1f1f1;
+        }
+        
+        .overlay .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 60px;
+        }
+        
+        @media screen and (max-height: 450px) {
+          .overlay {overflow-y: auto;}
+          .overlay a {font-size: 20px}
+          .overlay .closebtn {
+          font-size: 40px;
+          top: 15px;
+          right: 35px;
+          }
+        }
+        
+          </style>
+
+    </html>

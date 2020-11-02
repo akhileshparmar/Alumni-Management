@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Admin Email</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+          <img src="/media/logo/Sage-University.png" height="50" class="d-inline-block align-top" alt="" loading="lazy">            
+      </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+
+
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link ml-2" href="Admin-Notice">Notices</a>
+                <a class="nav-item nav-link ml-2" href="Admin-Event">Events</a>
+                <a class="nav-item nav-link ml-2" href="Admin-Gallery">Gallery</a>
+                <a class="nav-item nav-link ml-2" href="Admin-Email">Emails</a>
+                <a class="nav-item nav-link ml-2" href="Admin-Job-Board">Job-Board</a>                
+                <a class="nav-item nav-link ml-2" href="Admin-Search">Search</a>   
+                <a href="Admin-Logout" type="button" class="btn btn-dark ml-2">logout</a>             
+            </div>
+            </div>
+  </nav>
+
+  <div class="container-fluid">
+
+      <form method="POST" action="Admin-Email" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Mail with File</h5>              
+              </div>
+              <div class="modal-body">
+                <div>
+                  <div class="form-group">
+                    <label class="col-form-label">Subject</label>
+                    <input type="text" name="subject" class="form-control" id="subject1" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label"><b>File</b> (Optional)</label>
+                    <input type="file" name="files" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Message</label>
+                    <textarea name="message" rows="1" class="form-control" id="message1" required></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Send message</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+    </div>
+
+  </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    {% endif %}
+  </body>
+</html>

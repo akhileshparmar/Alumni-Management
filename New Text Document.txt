@@ -1,0 +1,12 @@
+
+python anywhere = RN5P@MyPythonAnyWhereAccount@
+
+database = mysqlpassword
+
+superuser = akhiparmar36503395
+
+sage.alumni.tracking.system@gmail.com
+RN5P@sage.alumni.tracking.system@
+
+RN5P@PythonDeveloper@
+RN5P@PythonProgrammer@

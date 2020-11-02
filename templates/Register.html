@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Sign-Up</title>
+  </head>
+
+
+  <body>
+
+    
+
+    <div class="">
+      <header class="blog-header py-3 container">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+
+          <div class="col-3 text-center">            
+            <a class="btn btn-sm btn-outline-primary mx-2 my-2" href="/" >Home</a>
+          </div>
+          
+          <div class="col-6 text-center">
+            <img src="/media/logo/Sage-University.png" />
+            <h3 style="font-family: 'Times New Roman';">Alumni Registration</h3>
+          </div>
+
+          <div class="col-3 text-center">            
+            <a class="btn btn-sm btn-outline-success mx-2 my-2" href="/Login" >login</a>
+          </div>
+
+        </div>
+      </header>
+
+      <div class="container">
+
+        {% for message in messages %}
+        {% if message.tags == 'info' %}
+
+        <script>
+          window.onload = function() {
+            alert('{{message}}')
+          }
+        </script>
+        
+        {% endif %}
+        {% endfor %}
+      
+        </div>
+      <hr class="featurette-divider">
+      
+    <form class="container my-5 was-validated" method="POST" action="/Register" enctype="multipart/form-data">
+        {% csrf_token %} 
+        <div class="form-row">
+          <div class="col-md-4 my-2 mx-2">
+            <label for="validationTextarea">First name</label>
+            <input class="form-control is-invalid" pattern="[A-Za-z]{0,10}" name="firstname" id="validationTextarea1" required>            
+          </div>
+          <div class="col-md-3 my-2 mx-2">
+            <label for="validationTextarea">Last name</label>
+            <input class="form-control is-invalid" pattern="[A-Za-z]{0,10}" name="lastname" id="validationTextarea2" required>          
+          </div>           
+          <div class="col-md-3 my-2 mx-2">
+            <label for="validationTextarea">Username</label>
+            <input class="form-control is-invalid" pattern="[A-Za-z0-9]{0,10}" name="username" id="validationTextarea3" required>            
+          </div>           
+        
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-6 my-2 mx-2">
+            <label for="validationTextarea">Your image</label>
+            <input type="file" class="form-control is-invalid pd" name="image" placeholder="upload your image" aria-describedby="validatedInputGroupPrepend" required>
+          </div>
+          <div class="col-md-3 my-2 mx-2">
+            <label for="validationTextarea">Date of Birth</label>
+            <input type="date" class="form-control is-invalid py-2 px-2" name="dob" aria-describedby="validatedInputGroupPrepend" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label>Email</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="email" minlength="11" class="form-control" placeholder="" name="email" aria-describedby="inputGroupPrepend2" required>                
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Password</label>
+                <input type="Password" minlength="6" class="form-control" placeholder="" name="password" required>                
+              </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <select class="custom-select" id="inputGroupSelect01" name="course" required>
+                  <option value="">Course</option>
+                  <option value="B.Tech">B.Tech</option>
+                  <option value="M.Tech">M.Tech</option>                  
+                </select>
+                <div class="invalid-feedback">Choose your Branch</div>
+            </div>          
+            <div class="col-md-4 mb-3">
+                <select class="custom-select" id="inputGroupSelect02" name="branch" required>
+                  <option value="">Branch</option>
+                  <option value="Information technology">Information technology</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Civil">Civil</option>
+                  <option value="Electronics and communication">Electronics and communication</option>
+                  <option value="Mechanical">Mechanical</option>
+                  <option value="Digital Communication3">Digital Communication</option>
+                  <option value="Automobile">Automobile</option>
+                </select>
+                <div class="invalid-feedback">Choose your class</div>
+
+            </div>          
+            <div class="col-md-4 mb-3">
+                <select class="custom-select" id="inputGroupSelect03" name="section" required>
+                  <option value="">Section</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>                  
+                </select>
+                <div class="invalid-feedback">Choose your section</div>
+
+            </div> 
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label>Enrollment no.</label>
+              <input type="text" class="form-control" pattern="[A-Z0-9]{11,15}" name="enrollment"  placeholder="" required>
+              <div class="invalid-feedback">Caps On</div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label>Scholar no.</label>
+              <input type="" class="form-control" min="101" pattern="[0-9]{3,6}" name="scholar"  placeholder="" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label>Year of Passing</label>
+              <input type="text" min="2020" class="form-control" pattern="[0-9]{4}" name="year" placeholder="Year of Admission" required>
+            </div>
+          </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label>Address</label>
+            <input type="text" class="form-control" name="address" placeholder="" required>
+          </div>
+            <div class="col-md-2 mb-3">
+              <label>City</label>
+              <input type="text" class="form-control" name="city" placeholder="" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label>State</label>
+              <input type="text" class="form-control" name="state" placeholder="" required>
+            </div> 
+            <div class="col-md-3 mb-3">
+                <label>Mobile no.</label>
+                <input type="" pattern="[0-9]{10}" class="form-control" name="mobile" placeholder="" required>
+            </div>             
+        </div>
+        
+
+        
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" name="check" id="customControlValidation1" required>
+          <label class="custom-control-label" for="customControlValidation1">All information filled above are valid</label>
+          <div class="invalid-feedback">Check the following</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+
+
+      
+      <div class="container">
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+</svg> 
+Please fill all the details correctly otherwise your registration will be cancelled</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+
+  <style>
+        
+  </style>
+</html>
